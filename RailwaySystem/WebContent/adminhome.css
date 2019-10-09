@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+.box{
+  float:left;
+  background-color: lightgrey;
+  width: 300px;
+  border-radius: 25px;
+  border: 15px solid blue;
+  padding: 50px 15px;
+  margin: 45px;
+
+}
+
+#rcorners1 {
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px; 
+  width: 200px;
+  height: 150px;  
+}

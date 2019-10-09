@@ -1,0 +1,128 @@
+<%@page import="org.apache.catalina.User"%>
+<%@page import= "java.util.ArrayList" %>
+<%@page import="com.models.Addtrain"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>Booking Ticket</title>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.container {
+  padding: 16px;
+}
+
+
+</style>
+</head>
+<body>
+ <% HttpSession sn=request.getSession(false);
+ArrayList<Addtrain> al=(ArrayList<Addtrain>)sn.getAttribute("train");
+%>
+<%-- <%ArrayList<Addtrain> al=(ArrayList<Addtrain>)request.getAttribute("train"); %> --%>
+
+<form action="RegisterController" >
+<input type="hidden" name="action" value="booking">
+<table >
+
+<tr>
+<th colspan="2" > Book Ticket</th></tr>
+  <tr>
+    <td>Select Train NO</td>
+    <td><div class="col-75">
+        <select name="trainno">
+          <option value="T1001">T1001</option>
+          <option value="T1002">T1002</option>
+          <option value="T1003">T1003</option>
+          <option value="T1004">T1004</option>
+          <option value="T1005">T1005</option>
+          <option value="T1006">T1006</option>
+          <option value="T1007">T1007</option>
+          <option value="T1008">T1008</option>
+          <option value="T1008">T1011</option>
+        </select>
+      </div>
+    </div></td></tr>
+    <%for(Addtrain at:al){ %>
+    <tr>
+    <td>Source Station</td>
+    
+    <td><div class="col-75">
+       <td> <%=at.getDplace() %></td>
+      </div>
+    </div></td></tr>
+    <%} %>
+     <tr>
+    <td>Destination Station</td>
+    <td><div class="col-75">
+        <select name="dplace">
+           <option value="Delhi">Delhi</option>
+          <option value="Mumbai">MUMBAI</option>
+          <option value="Goa">Goa</option>
+          <option value="Patna jn">Patna jn</option>
+          <option value="Lucknow">Lucknow</option>
+          <option value="Tamilnadu">Tamilnadu</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Gorakhpur">Gorakhpur</option>
+          <option value="Varanashi">Varanashi</option>
+          <option value="Jhansi">Jhansi</option>
+        </select>
+      </div>
+    </div></td></tr>
+    
+    
+    <td>Enter Passenger Name</td>
+    <td><input type="text" placeholder="Passenger name" name="name" required></td>
+   </tr>
+   <tr>
+   <td>Address</td>
+    <td><input type="text" placeholder="Address" name="address" required></td>
+   </tr>
+   <tr>
+   <td>Phone No</td>
+    <td><input type="text" placeholder="Mobile Number" name="mobileno" required></td>
+   </tr>
+   <tr>
+   <td>Adhaar card Numer</td>
+    <td><input type="text" placeholder="Adhaar card No." name="adhaar" required></td>
+   </tr>
+  <tr>
+    <td>To Date</td>
+    <td><input type="date" placeholder="yyyy-mm-dd" name="todate" required></td>
+    
+  </tr>
+  <tr>
+    <td>No of ticket</td>
+    <td><div class="col-75">
+        <select name="noofseat">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+    </div></td></tr>
+    
+
+
+</table>
+
+<center>
+<input class="container" style="background-color: lightgreen; width:400px;" type="submit" name="action" value="Book Ticket" >
+</center>
+</form>
+</body>
+</html>

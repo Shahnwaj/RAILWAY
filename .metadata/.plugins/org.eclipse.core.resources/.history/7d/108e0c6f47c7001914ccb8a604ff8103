@@ -1,0 +1,50 @@
+<%@page import="com.models.Booking"%>
+<%@page import= "java.util.ArrayList"%>
+<%@page import="com.services.RegisterServicesImpl"%>
+<%@page import="com.controller.RegisterController"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="adminhome.css">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+ArrayList<Booking> ac =(ArrayList<Booking>)request.getAttribute("ac");
+%>
+
+<div class="topnav">
+  <a  href="#home">Home</a>
+  <a href="adminadddetail.jsp">Add Trains Details</a>
+  <a href="adminupdatedetail.jsp">Edit Train Details</a>
+  <a href="complaint.jsp">Complaints Box</a>
+  
+</div>
+
+
+<table>
+  <tr>
+    <th>NAME</th>
+    <th>EMAIL ID</th>
+    <th>ADDRESS </th>
+    <th>COMPLAINT MESSAGE</th>
+   
+    </tr>
+   <%for(Booking at:ac){ %>
+     <tr>
+    <td><%=at.getName() %></td>
+    <td><%=at.getAddress() %></td>
+    <td><%=at.getMobileno() %></td>
+    <td><%=at.getAdhaar() %></td>
+    <td><%=at.getFromdate() %></td>
+    <td><%=at.getTodate()%></td>
+    <td><%=at.getNoofseat() %></td>
+  </tr>
+<%} %> 
+  </table>
+
+</body>
+</html>
